@@ -1,9 +1,9 @@
-My blog: https://lujingting.blogspot.com/ (almost chinese)
-My email: xielu314@gmail.com
-My telegram: @xielu
+My blog: https://lujingting.blogspot.com/ (almost chinese) <br>
+My email: xielu314@gmail.com <br>
+My telegram: @xielu<br>
 
-English ok
-Japanese ok
-Chinese ok
+English ok <br>
+Japanese ok <br>
+Chinese ok <br>
 
 よろしくお願いいたします。
