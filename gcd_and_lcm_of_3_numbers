@@ -1,0 +1,73 @@
+//this program is used to calculate the gcd and lcm of 3 positive integers.
+//made by ,20220525
+#include<stdio.h>
+int main(){
+    int a,b,c,rem,gcd_ab,gcd_abc,lcm_ab,lcm_abc,i; //these variables will be used to scanning and calculation,witch means they may change
+    int a0,b0,c0,gcd_ab0,lcm_ab0; //these variables will remember the original result of scanning and calculation,which means they won't change
+
+    puts("input positive integer a");
+    scanf("%d",&a);
+    puts("input positive integer b");
+    scanf("%d",&b);
+    puts("input positive integer c");
+    scanf("%d",&c);
+
+    a0 = a; //original value of a,b,c should be remembered due to a,b,c will be used on calculation
+    b0 = b; 
+    c0 = c; 
+
+    rem = a % b; //use euclidean algorithm to calculate the gcd of a and b
+    while(rem != 0){
+        a = b;
+        b = rem;
+        rem = a % b;
+    }
+
+    gcd_ab = b;
+    gcd_ab0 = gcd_ab;
+
+    a = a0; //give a,b,c the original value for continued calculation
+    b = b0;
+    c = c0;
+
+    i = 1;
+    while(c % gcd_ab != 0){ //divise c by all divisors of gcd_ab from the big to the small.if c gets divisible,the now divisor is gcd_abc
+        if(gcd_ab0 % i == 0) gcd_ab = gcd_ab0 / i;
+        i++;
+    }
+
+    gcd_abc = gcd_ab; 
+    gcd_ab = gcd_ab0; //the calculation of gcd ended here
+
+    while(a % b != 0){ //calculate lcm(a,b).a keeps adding itself until a%b=0,when a becomes lcm_ab
+        a = a + a0;
+    }
+
+    lcm_ab = a;
+    lcm_ab0 = lcm_ab;
+    a = a0;
+
+    while(lcm_ab % c != 0){ //calculate lcm(lcm(a,b),c),which is lcm(a,b,c)
+        lcm_ab = lcm_ab + lcm_ab0;
+    }
+
+    lcm_abc = lcm_ab;
+    lcm_ab = lcm_ab0;
+
+    printf("gcd(%d,%d,%d) is %d\n",a,b,c,gcd_abc);
+    printf("lcm(%d,%d,%d) is %d\n",a,b,c,lcm_abc);
+
+    return 0;
+}
+
+/*execution result
+k@k-virtual-machine:/mnt/hgfs/share/kadai06$ ./gcd_and_lcm_of_3_numbers
+input positive integer a
+21
+input positive integer b
+12
+input positive integer c
+18
+gcd(21,12,18) is 3
+lcm(21,12,18) is 252
+*/
